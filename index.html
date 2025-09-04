@@ -1,89 +1,677 @@
 
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Туры и экскурсии по Таиланду</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-<script src="//code.jivo.ru/widget/JsoYxtXvIE" async></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thailand Tours - Экскурсии и туры по Таиланду</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="//code.jivo.ru/widget/JsoYxtXvIE" async></script>    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(255, 111, 97, 0.85) 0%, rgba(58, 83, 155, 0.85) 100%), url('http://static.photos/travel/1200x630/25') center/cover no-repeat;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-bg {
+                background: linear-gradient(135deg, rgba(255, 111, 97, 0.85) 0%, rgba(58, 83, 155, 0.85) 100%), url('http://static.photos/travel/640x360/25') center/cover no-repeat;
+            }
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6F61 0%, #3A539B 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 111, 97, 0.5);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
+        }
+        
+        .rating-star {
+            color: #FFD700;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
-  <!-- Hero Section -->
-  <header class="bg-cover bg-center h-96 flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80');">
-    <div class="bg-black bg-opacity-50 p-6 rounded-xl text-center">
-      <h1 class="text-4xl md:text-5xl text-white font-bold mb-4">Открой Таиланд с нами</h1>
-      <p class="text-lg text-gray-200 mb-6">Лучшие туры и экскурсии по Бангкоку, Пхукету и Паттайе</p>
-      <a href="#tours" class="px-6 py-3 bg-yellow-500 text-white rounded-xl font-semibold hover:bg-yellow-600">Выбрать тур</a>
-    </div>
-  </header>
-
-  <!-- Tours Section -->
-  <section id="tours" class="max-w-6xl mx-auto py-16 px-6">
-    <h2 class="text-3xl font-bold text-center mb-12">Популярные экскурсии</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <!-- Card 1 -->
-      <div class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Пхукет"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Острова Пхукета</h3>
-          <p class="text-gray-600 mb-4">Морская прогулка на катере, белоснежные пляжи и кристально чистая вода.</p>
-          <p class="font-bold text-lg mb-4">от 2500 THB</p>
-          <a href="#booking" class="inline-block px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Забронировать</a>
+<body class="bg-gray-50">
+    <!-- Навигация -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-orange-500">ThaiTuga</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#tours" class="text-gray-700 hover:text-orange-500 transition">Туры</a>
+                <a href="#excursions" class="text-gray-700 hover:text-orange-500 transition">Экскурсии</a>
+                <a href="#advantages" class="text-gray-700 hover:text-orange-500 transition">Преимущества</a>
+                <a href="#reviews" class="text-gray-700 hover:text-orange-500 transition">Отзывы</a>
+                <a href="#booking" class="text-gray-700 hover:text-orange-500 transition">Бронирование</a>
+                <a href="#contact" class="text-gray-700 hover:text-orange-500 transition">Контакты</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-feather="menu"></i>
+            </button>
         </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Бангкок"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Храмы Бангкока</h3>
-          <p class="text-gray-600 mb-4">Погружение в духовность и архитектуру столицы Таиланда.</p>
-          <p class="font-bold text-lg mb-4">от 1800 THB</p>
-          <a href="#booking" class="inline-block px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Забронировать</a>
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute top-full left-0 right-0">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#tours" class="text-gray-700 hover:text-orange-500 transition py-2">Туры</a>
+                <a href="#excursions" class="text-gray-700 hover:text-orange-500 transition py-2">Экскурсии</a>
+                <a href="#advantages" class="text-gray-700 hover:text-orange-500 transition py-2">Преимущества</a>
+                <a href="#reviews" class="text-gray-700 hover:text-orange-500 transition py-2">Отзывы</a>
+                <a href="#booking" class="text-gray-700 hover:text-orange-500 transition py-2">Бронирование</a>
+                <a href="#contact" class="text-gray-700 hover:text-orange-500 transition py-2">Контакты</a>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <!-- Card 3 -->
-      <div class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Паттайя"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Шоу в Паттайе</h3>
-          <p class="text-gray-600 mb-4">Ночной город, красочные шоу и незабываемые эмоции.</p>
-          <p class="font-bold text-lg mb-4">от 1500 THB</p>
-          <a href="#booking" class="inline-block px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">Забронировать</a>
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Закрытие меню при клике вне его области
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Hero секция -->
+    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-20 text-center text-white" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 font-playfair">Откройте магию Таиланда</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Эксклюзивные туры и незабываемые приключения в стране улыбок</p>
+            <a href="#booking" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-block">Забронировать тур</a>
         </div>
-      </div>
+    </section>
 
+    <!-- Популярные туры -->
+    <section id="tours" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Популярные туры</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Тур 1 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/travel/640x360/2" alt="Храмы Бангкока" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Храмы Бангкока</h3>
+                        <p class="text-gray-600 mb-4">Исследуйте древние храмы и погрузитесь в богатую культуру тайской столицы</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 2 дня</span>
+                            <span class="text-orange-500 font-bold text-xl">5,900 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="bangkok-temples">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Тур 2 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/travel/640x360/3" alt="Острова Пхи-Пхи" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Острова Пхи-Пхи</h3>
+                        <p class="text-gray-600 mb-4">Райские пляжи, кристально чистая вода и незабываемые закаты</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 3 дня</span>
+                            <span class="text-orange-500 font-bold text-xl">8,500 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="phiphi-islands">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Остальные 4 тура с аналогичной структурой -->
+                <!-- Тур 3 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <img src="http://static.photos/travel/640x360/4" alt="Слоновий заповедник" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Слоновий заповедник</h3>
+                        <p class="text-gray-600 mb-4">Уникальная возможность пообщаться с величественными животными в естественной среде</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 1 день</span>
+                            <span class="text-orange-500 font-bold text-xl">4,200 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="elephant-sanctuary">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Тур 4 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <img src="http://static.photos/travel/640x360/5" alt="Парк Аюттхая" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Парк Аюттхая</h3>
+                        <p class="text-gray-600 mb-4">Исторический парк с древними руинами и храмами бывшей столицы Сиама</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 1 день</span>
+                            <span class="text-orange-500 font-bold text-xl">3,800 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="ayutthaya-park">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Тур 5 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
+                    <img src="http://static.photos/travel/640x360/6" alt="Чиангмай" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Чиангмай</h3>
+                        <p class="text-gray-600 mb-4">Знакомство с культурой горных племен и посещение уникальных храмов</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 4 дня</span>
+                            <span class="text-orange-500 font-bold text-xl">12,000 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="chiangmai-tribes">Подробнее</button>
+                    </div>
+                </div>
+
+                <!-- Тур 6 -->
+                <div class="tour-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <img src="http://static.photos/travel/640x360/7" alt="Пляжи Пхукета" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Пляжи Пхукета</h3>
+                        <p class="text-gray-600 mb-4">Отдых на лучших пляжах острова с возможностью заняться сноркелингом и дайвингом</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 3 дня</span>
+                            <span class="text-orange-500 font-bold text-xl">7,500 ₽</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition view-tour-details" data-tour="phuket-beaches">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для деталей тура -->
+    <div id="tour-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <img id="modal-image" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p id="modal-description" class="text-gray-700 mb-4"></p>
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> <span id="modal-duration"></span></span>
+                    <span id="modal-price" class="text-orange-500 font-bold text-xl"></span>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-bold mb-2">Что включено:</h4>
+                    <ul id="modal-inclusions" class="list-disc list-inside text-gray-700"></ul>
+                </div>
+                <button class="w-full btn-primary text-white font-bold py-3 px-6 rounded-lg book-this-tour">Забронировать этот тур</button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- Booking Form -->
-  <section id="booking" class="bg-yellow-50 py-16 px-6">
-    <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-8">
-      <h2 class="text-2xl font-bold mb-6 text-center">Забронировать экскурсию</h2>
-      <form class="space-y-4">
-        <input type="text" placeholder="Ваше имя" class="w-full border rounded-lg px-4 py-2"/>
-        <input type="email" placeholder="Email" class="w-full border rounded-lg px-4 py-2"/>
-        <input type="tel" placeholder="Телефон" class="w-full border rounded-lg px-4 py-2"/>
-        <select class="w-full border rounded-lg px-4 py-2">
-          <option>Выберите экскурсию</option>
-          <option>Острова Пхукета</option>
-          <option>Храмы Бангкока</option>
-          <option>Шоу в Паттайе</option>
-        </select>
-        <button type="submit" class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600">Отправить заявку</button>
-      </form>
-    </div>
-  </section>
+    <!-- Экскурсии -->
+    <section id="excursions" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Экскурсии</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Экскурсия 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/food/640x360/8" alt="Кулинарный мастер-класс" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Кулинарный мастер-класс</h3>
+                        <p class="text-gray-600 mb-4">Научитесь готовить традиционные тайские блюда под руководством шеф-повара</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 3 часа</span>
+                            <span class="text-orange-500 font-bold text-xl">2,500 ₽</span>
+                        </div>
+                        <button class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition quick-book" data-excursion="cooking-class">Быстрое бронирование</button>
+                    </div>
+                </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-300 py-8 text-center">
-    <p>© 2025 Туры по Таиланду. Все права защищены.</p>
-  </footer>
+                <!-- Экскурсия 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/wellness/640x360/9" alt="Традиционный тайский массаж" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Тайский массаж</h3>
+                        <p class="text-gray-600 mb-4">Обучающий сеанс традиционного тайского массажа с профессиональным инструктором</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 2 часа</span>
+                            <span class="text-orange-500 font-bold text-xl">1,800 ₽</span>
+                        </div>
+                        <button class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition quick-book" data-excursion="thai-massage">Быстрое бронирование</button>
+                    </div>
+                </div>
 
+                <!-- Экскурсия 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                    <img src="http://static.photos/sport/640x360/10" alt="Уроки муай тай" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Уроки муай тай</h3>
+                        <p class="text-gray-600 mb-4">Познакомьтесь с искусством тайского бокса под руководством опытного тренера</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 2 часа</span>
+                            <span class="text-orange-500 font-bold text-xl">2,200 ₽</span>
+                        </div>
+                        <button class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition quick-book" data-excursion="muay-thai">Быстрое бронирование</button>
+                    </div>
+                </div>
+
+                <!-- Экскурсия 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+                    <img src="http://static.photos/food/640x360/11" alt="Гастрономический тур" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Гастрономический тур</h3>
+                        <p class="text-gray-600 mb-4">Путешествие по местным рынкам и ресторанам с дегустацией authentic блюд</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-500"><i data-feather="clock" class="inline mr-2"></i> 4 часа</span>
+                            <span class="text-orange-500 font-bold text-xl">3,500 ₽</span>
+                        </div>
+                        <button class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition quick-book" data-excursion="food-tour">Быстрое бронирование</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="advantages" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Наши преимущества</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="users" class="text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Местные гиды</h3>
+                    <p class="text-gray-600">Только проверенные гиды, знающие все секреты Таиланда</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="shield" class="text-orange-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Безопасность</h3>
+                    <p class="text-gray-600">Все мероприятия проходят с соблюдением мер безопасности</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="heart" class="text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Индивидуальный подход</h3>
+                    <p class="text-gray-600">Мы подбираем туры согласно вашим предпочтениям и пожеланиям</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="clock" class="text-orange-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Поддержка 24/7</h3>
+                    <p class="text-gray-600">Наша команда всегда на связи для решения любых вопросов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Отзывы клиентов</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/12" alt="Анна" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Анна</h3>
+                            <div class="flex">
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Невероятное путешествие на острова Пхи-Пхи! Все было организовано на высшем уровне. Особенно впечатлила ночная экскурсия с наблюдением за планктоном."</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/13" alt="Дмитрий" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Дмитрий</h3>
+                            <div class="flex">
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Кулинарный мастер-класс превзошел все ожидания! Узнал секреты приготовления том яма и пад тая. Теперь могу удивлять друзей дома аутентичной тайской кухней."</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/80x80/14" alt="Ольга" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-bold">Ольга</h3>
+                            <div class="flex">
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                                <i data-feather="star" class="rating-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Посещение слоновьего заповедника было самым трогательным моментом нашего путешествия. Спасибо за бережное отношение к животным и возможность пообщаться с ними в естественной среде."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма бронирования -->
+    <section id="booking" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Бронирование тура</h2>
+            <form id="booking-form" class="max-w-2xl mx-auto bg-gray-50 p-8 rounded-xl shadow-lg" data-aos="fade-up">
+                <div class="mb-6">
+                    <label for="tour-select" class="block text-gray-700 mb-2">Выберите тур или экскурсию</label>
+                    <select id="tour-select" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                        <option value="">-- Выберите вариант --</option>
+                        <option value="bangkok-temples">Храмы Бангкока - 5,900 ₽</option>
+                        <option value="phiphi-islands">Острова Пхи-Пхи - 8,500 ₽</option>
+                        <option value="elephant-sanctuary">Слоновий заповедник - 4,200 ₽</option>
+                        <option value="ayutthaya-park">Парк Аюттхая - 3,800 ₽</option>
+                        <option value="chiangmai-tribes">Чиангмай - 12,000 ₽</option>
+                        <option value="phuket-beaches">Пляжи Пхукета - 7,500 ₽</option>
+                        <option value="cooking-class">Кулинарный мастер-класс - 2,500 ₽</option>
+                        <option value="thai-massage">Тайский массаж - 1,800 ₽</option>
+                        <option value="muay-thai">Уроки муай тай - 2,200 ₽</option>
+                        <option value="food-tour">Гастрономический тур - 3,500 ₽</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="booking-date" class="block text-gray-700 mb-2">Дата</label>
+                    <input type="date" id="booking-date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="guests" class="block text-gray-700 mb-2">Количество гостей</label>
+                    <input type="number" id="guests" min="1" max="20" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-700 mb-2">Имя</label>
+                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="phone" class="block text-gray-700 mb-2">Телефон</label>
+                    <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="notes" class="block text-gray-700 mb-2">Дополнительные пожелания</label>
+                    <textarea id="notes" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500"></textarea>
+                </div>
+                <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-6 rounded-lg">Забронировать</button>
+                <div id="booking-message" class="mt-4 hidden"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Обратная связь</h2>
+            <form id="contact-form" class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg" data-aos="fade-up">
+                <div class="mb-6">
+                    <label for="contact-name" class="block text-gray-700 mb-2">Имя</label>
+                    <input type="text" id="contact-name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="contact-email" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="contact-email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="subject" class="block text-gray-700 mb-2">Тема</label>
+                    <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required>
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-700 mb-2">Сообщение</label>
+                    <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500" required></textarea>
+                </div>
+                <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-6 rounded-lg">Отправить</button>
+                <div id="contact-message" class="mt-4 hidden"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Контакты и футер -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ThaiTuga</h3>
+                    <p class="text-gray-400">Лучшие туры и экскурсии по Таиланду с 2015 года</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Контакты</h3>
+                    <p class="text-gray-400 mb-2"><i data-feather="map-pin" class="inline mr-2"></i> Бангкок, ул. Сукхумвит, 123</p>
+                    <p class="text-gray-400 mb-2"><i data-feather="phone" class="inline mr-2"></i> +66 123 456 789</p>
+                    <p class="text-gray-400"><i data-feather="mail" class="inline mr-2"></i> info@thaituga.ru</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Социальные сети</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Карта</h3>
+                    <div class="h-40 bg-gray-700 rounded-lg flex items-center justify-center">
+                        <p class="text-gray-400">Карта будет здесь</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 ThaiTuga. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script>
+        // Инициализация AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Инициализация Feather Icons
+        feather.replace();
+
+        // Данные для туров
+        const toursData = {
+            'bangkok-temples': {
+                title: 'Храмы Бангкока',
+                image: 'http://static.photos/travel/640x360/2',
+                description: 'Исследуйте древние храмы и погрузитесь в богатую культуру тайской столицы. Посетите знаменитый Ват Арун, Большой дворец и Храм Изумрудного Будды.',
+                duration: '2 дня',
+                price: '5,900 ₽',
+                inclusions: [
+                    'Трансфер из отеля и обратно',
+                    'Профессиональный русскоязычный гид',
+                    'Входные билеты во все храмы',
+                    'Обед в традиционном ресторане'
+                ]
+            },
+            'phiphi-islands': {
+                title: 'Острова Пхи-Пхи',
+                image: 'http://static.photos/travel/640x360/3',
+                description: 'Райские пляжи, кристально чистая вода и незабываемые закаты. Посетите знаменитый пляж Майя Бэй, где снимался фильм "Пляж".',
+                duration: '3 дня',
+                price: '8,500 ₽',
+                inclusions: [
+                    'Проживание в отеле на острове',
+                    'Экскурсия на скоростном катере',
+                    'Сноркелинг с маской и трубкой',
+                    'Завтрак, обед и ужин'
+                ]
+            },
+            // Данные для остальных туров...
+        };
+
+        // Обработка модального окна туров
+        document.querySelectorAll('.view-tour-details').forEach(button => {
+            button.addEventListener('click', () => {
+                const tourId = button.getAttribute('data-tour');
+                const tour = toursData[tourId];
+                
+                if (tour) {
+                    document.getElementById('modal-title').textContent = tour.title;
+                    document.getElementById('modal-image').src = tour.image;
+                    document.getElementById('modal-image').alt = tour.title;
+                    document.getElementById('modal-description').textContent = tour.description;
+                    document.getElementById('modal-duration').textContent = tour.duration;
+                    document.getElementById('modal-price').textContent = tour.price;
+                    
+                    const inclusionsList = document.getElementById('modal-inclusions');
+                    inclusionsList.innerHTML = '';
+                    tour.inclusions.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        inclusionsList.appendChild(li);
+                    });
+                    
+                    document.getElementById('tour-modal').classList.remove('hidden');
+                }
+            });
+        });
+
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('tour-modal').classList.add('hidden');
+        });
+
+        // Быстрое бронирование экскурсий
+        document.querySelectorAll('.quick-book').forEach(button => {
+            button.addEventListener('click', () => {
+                const excursion = button.getAttribute('data-excursion');
+                document.getElementById('tour-select').value = excursion;
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Бронирование из модального окна
+        document.querySelector('.book-this-tour').addEventListener('click', () => {
+            document.getElementById('tour-modal').classList.add('hidden');
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Обработка формы бронирования
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                tour: document.getElementById('tour-select').value,
+                date: document.getElementById('booking-date').value,
+                guests: document.getElementById('guests').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                notes: document.getElementById('notes').value
+            };
+            
+            try {
+                // Здесь будет запрос к API
+                const response = await fetch('/api/booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('booking-message').textContent = 'Бронирование успешно отправлено! Мы свяжемся с вами в ближайшее время.';
+                    document.getElementById('booking-message').classList.remove('hidden', 'text-red-500');
+                    document.getElementById('booking-message').classList.add('text-green-500');
+                    document.getElementById('booking-form').reset();
+                } else {
+                    throw new Error(result.message || 'Ошибка при отправке формы');
+                }
+            } catch (error) {
+                document.getElementById('booking-message').textContent = error.message;
+                document.getElementById('booking-message').classList.remove('hidden', 'text-green-500');
+                document.getElementById('booking-message').classList.add('text-red-500');
+            }
+        });
+
+        // Обработка формы обратной связи
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                // Здесь будет запрос к API
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('contact-message').textContent = 'Сообщение успешно отправлено! Мы ответим вам в ближайшее время.';
+                    document.getElementById('contact-message').classList.remove('hidden', 'text-red-500');
+                    document.getElementById('contact-message').classList.add('text-green-500');
+                    document.getElementById('contact-form').reset();
+                } else {
+                    throw new Error(result.message || 'Ошибка при отправке формы');
+                }
+            } catch (error) {
+                document.getElementById('contact-message').textContent = error.message;
+                document.getElementById('contact-message').classList.remove('hidden', 'text-green-500');
+                document.getElementById('contact-message').classList.add('text-red-500');
+            }
+        });
+    </script>
 </body>
 </html>
+
